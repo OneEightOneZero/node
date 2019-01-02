@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="u" />
+    <input id="p" />
+    <button id="b">登录</button>
+    <script src="jquery.js"></script>
+    <script>
+        $("#b").click(() => {
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8888/1000phone/1810/node/day2/login.php",
+                data: {
+                    u: $("#u").val(),
+                    p: $("#p").val(),
+                },
+                success(data) {
+                    console.log(data)
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

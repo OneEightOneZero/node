@@ -72,9 +72,43 @@ function eatMeal() {
 }
 buyPizza().then(buyDrink).then(eatMeal);
 ```
+# await和async
 
+await和async也是解决异步嵌套的一个方法，它建立在promise的基础上
+[promise&&await&&deferred和event loop](https://github.com/Wscats/node-tutorial/issues/12)
+
+# event和观察者模式
+
+```js
+myEmitter.on('buypiza', () => {
+    setTimeout(() => {
+        console.log('买披萨');
+        myEmitter.emit('eatpiza');
+    }, 1000)
+});
+
+myEmitter.on('eatpiza', () => {
+    setTimeout(() => {
+        console.log('吃披萨');
+        myEmitter.emit('meeting');
+    }, 2000)
+});
+
+myEmitter.on('meeting', () => {
+    console.log('约会');
+});
+myEmitter.emit('buypiza');
+```
+
+# node-wifi
+
+```js
+var wifi = require('node-wifi');
+```
 
 # request
+
+以前我们是自己写前端页面触发ajax请求来获取后端信息，但是有了request模块，我们可以伪造这个ajax请求
 
 任何前端请求都有
 
