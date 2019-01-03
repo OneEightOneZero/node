@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="" />
+</head>
+
+<body>
+    <script src="jquery.js"></script>
+    <script>
+        // 保留全局函数
+        function callback(data){
+            console.log(data)
+        }
+        var script = document.createElement("script");
+        script.src = "http://10.3.143.166:3000/account/token";
+        document.body.appendChild(script);
+    </script>
+    <!-- <script>
+        callback('你好')
+    </script> -->
+
+</body>
+
+</html>
