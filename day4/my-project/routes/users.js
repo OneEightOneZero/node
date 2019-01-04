@@ -24,6 +24,7 @@ router.post('/findUser', async (req, res, next) => {
 });
 
 router.post('/login', async (req, res, next) => {
+  console.log(req.body);
   let {
     inputEmail,
     inputPassword
@@ -31,6 +32,7 @@ router.post('/login', async (req, res, next) => {
   let data = await find(`students`, {
     name: inputEmail
   })
+  console.log(data)
   if (data[0].password === inputPassword) {
     res.send("success");
   } else {
