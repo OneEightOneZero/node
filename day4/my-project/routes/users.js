@@ -1,6 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var db = require("../libs/db.js");
+var {
+  find,
+  insert,
+  del,
+  update
+} = require("../libs/db.js");
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
@@ -12,10 +17,25 @@ router.post('/findUser', async (req, res, next) => {
     name,
     skill
   } = req.body
-  let data = await db.connect(`select * from students where ?`, [{
+  let data = await find(`students`, {
     id
-  }])
+  })
   res.send(data);
+});
+
+router.post('/login', async (req, res, next) => {
+  let {
+    inputEmail,
+    inputPassword
+  } = req.body
+  let data = await find(`students`, {
+    name: inputEmail
+  })
+  if (data[0].password === inputPassword) {
+    res.send("success");
+  } else {
+    res.send("fail");
+  }
 });
 
 module.exports = router;
