@@ -5,7 +5,7 @@ var {
   insert,
   del,
   update
-} = require("../libs/db.js");
+} = require("../libs/mysql.js");
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
