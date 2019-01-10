@@ -62,13 +62,34 @@ let find = (col, obj) => {
     });
   })
 }
-
+let sort = (col, obj, obj2) => {
+  return new Promise(async (resolve, reject) => {
+    let {
+      db,
+      client
+    } = await connect();
+    const collection = db.collection(col);
+    collection.find({
+      ...obj
+    }).sort({
+      ...obj2
+    }).toArray(function (err, docs) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(docs);
+        client.close();
+      }
+    });
+  })
+}
 
 module.exports = {
   connect,
   insert,
   find,
-  ObjectId
+  ObjectId,
+  sort
 }
 
 // node express mongodb jquery
